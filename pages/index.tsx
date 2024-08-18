@@ -10,16 +10,13 @@ import {
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Switch } from "@/components/ui/switch";
 import { RotateCw, Copy } from "lucide-react";
-
-const inter = Inter({ subsets: ["latin"] });
 
 enum PasswordTypeEnum {
   RandomPassword = "randomPassword",
@@ -128,7 +125,7 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center p-4 sm:p-2 bg-[#314455]`}
+      className={`flex min-h-screen flex-col items-center p-4 sm:p-2 bg-[#222f3b]`}
     >
       <div className="font-semibold text-2xl sm:text-4xl text-white mb-2 mt-24">
         <h1>Password Generator</h1>
@@ -136,13 +133,9 @@ export default function Home() {
 
       <div className="w-full grid grid-cols-12 p-4 mt-6 rounded-lg ">
         <div className="col-span-12 sm:col-span-6 sm:col-start-4 ">
-          <Input
-            type="text"
-            className={cn(
-              "h-[60px] rounded-[50px] text-center text-xl sm:text-2xl font-medium bg-white border-[#66fcf1] border"
-            )}
-            value={password}
-          />
+          <div className="min-h-[60px] rounded-md text-center text-xl sm:text-2xl font-medium bg-white border-[#66fcf1] border">
+            <span className="break-words">{password}</span>
+          </div>
         </div>
       </div>
 
@@ -166,7 +159,7 @@ export default function Home() {
       </div>
       {/* Buttons end */}
 
-      <Card className="md:w-[50%]">
+      <Card className="lg:w-[50%]">
         <CardContent
           className={cn("p-1 justify-center text-center rounded-md")}
         >
@@ -176,7 +169,7 @@ export default function Home() {
                 <div className="flex m-4">
                   <Label className="mr-2">Length</Label>
                   <Slider
-                    defaultValue={[length]}
+                    value={[length]}
                     max={maxLength}
                     min={6}
                     step={1}
@@ -194,7 +187,7 @@ export default function Home() {
                     }
                   >
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="Select a fruit" />
+                      <SelectValue placeholder="Select a password type" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectGroup>
